@@ -3,7 +3,7 @@ MAINTAINER Joseph Ku <joseph.ku@octanner.com>
 
 CMD ["activator", "test"]
 
-ENV _JAVA_OPTIONS="-Xms128m -Xmx300m"
+ENV _JAVA_OPTIONS="-Xms128m -Xmx350m"
 
 COPY . /application
 WORKDIR /application
