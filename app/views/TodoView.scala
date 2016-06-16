@@ -12,7 +12,7 @@ object TodoView {
     title = todo.title,
     order = todo.order,
     completed = todo.completed,
-    url = s"${if (request.secure) "https" else "http"}://${request.host}/todo/${todo.id.toString}"
+    url = s"${if (request.secure) "https" else "http"}://${request.host}/todos/${todo.id.toString}"
   )
 }
 

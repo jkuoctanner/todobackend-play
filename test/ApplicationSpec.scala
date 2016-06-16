@@ -21,7 +21,7 @@ class ApplicationSpec extends PlaySpec with OneAppPerTest {
   "TodoController" should {
 
     "return empty content" in {
-      val home = route(app, FakeRequest(GET, "/todo")).get
+      val home = route(app, FakeRequest(GET, "/todos")).get
 
       status(home) mustBe OK
       contentType(home) mustBe Some("application/json")

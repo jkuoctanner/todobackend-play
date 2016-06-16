@@ -1,0 +1,54 @@
+app:
+  build: ../../
+  dockerfile: docker/release/Dockerfile
+  links:
+    - db
+  ports:
+    - "9000:9000"
+  expose:
+    - "9000"
+  environment:
+    APPLICATION_SECRET: WKNd<w6cujIMRr;/vFNJY0grfI6w2tUX7rZj>0L6t9kF4vl1^xX;QZkbAZH]T^D9
+    POSTGRES_HOST: db
+    POSTGRES_USER: todos
+    POSTGRES_PASSWORD: password
+    POSTGRES_DB: todos
+
+# test:
+#   image: jmenga/todobackend-specs
+#   links:
+#     - nginx
+#   environment:
+#     URL: http://nginx:8000/todos
+#     JUNIT_REPORT_PATH: /reports/acceptance.xml
+#     JUNIT_REPORT_STACK: 1
+#   command: --reporter mocha-jenkins-reporter
+
+test:
+  image: jkuoctanner/todobackend-specs
+  links:
+    - app
+  environment:
+    JUNIT_REPORT_PATH: /reports/acceptance.xml
+    JUNIT_REPORT_STACK: 1
+  command: --reporter mocha-jenkins-reporter
+
+db:
+  image: postgres:latest
+  ports:
+    - "5432:5432"
+  expose:
+    - "5432"
+  environment:
+    POSTGRES_USER: todos
+    POSTGRES_PASSWORD: password
+    POSTGRES_DB: todos
+
+agent:
+  image: jmenga/ansible
+  links:
+    - db
+  environment:
+    PROBE_HOST: "db"
+    PROBE_PORT: "5432"
+  command: ["probe.yml"]

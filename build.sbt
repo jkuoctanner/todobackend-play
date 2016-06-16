@@ -1,4 +1,4 @@
-name := """todo-play-scala-postgres"""
+name := """todobackend-play"""
 
 version := "1.0"
 
