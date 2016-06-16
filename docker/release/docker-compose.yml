@@ -13,6 +13,7 @@ app:
     POSTGRES_USER: todos
     POSTGRES_PASSWORD: password
     POSTGRES_DB: todos
+  mem_limit: 350m
 
 # test:
 #   image: jmenga/todobackend-specs

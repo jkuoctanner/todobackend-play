@@ -66,13 +66,15 @@ release:
 	@ docker-compose -p $(REL_PROJECT) -f $(REL_COMPOSE_FILE) pull test
 	${INFO} "Building images..."
 	@ docker-compose -p $(REL_PROJECT) -f $(REL_COMPOSE_FILE) build app
-	#${INFO} "Ensuring database is ready..."
-	#@ docker-compose -p $(REL_PROJECT) -f $(REL_COMPOSE_FILE) run --rm agent
+	${INFO} "Ensuring database is ready..."
+	@ docker-compose -p $(REL_PROJECT) -f $(REL_COMPOSE_FILE) run --rm agent
 	#${INFO} "Running acceptance tests..."
 	#@ docker-compose -p $(REL_PROJECT) -f $(REL_COMPOSE_FILE) up test
 	#@ docker cp $$(docker-compose -p $(REL_PROJECT) -f $(REL_COMPOSE_FILE) ps -q test):/reports/. reports
 	#${CHECK} $(REL_PROJECT) $(REL_COMPOSE_FILE) test
 	#${INFO} "Acceptance testing complete"
+	${INFO} "Running todobackend-play application..."
+	@ docker-compose -p $(REL_PROJECT) -f $(REL_COMPOSE_FILE) up -d app
 
 clean:
 	${INFO} "Destroying development environment..."

@@ -3,6 +3,7 @@ test:
   dockerfile: docker/dev/Dockerfile
   volumes_from:
     - cache
+  mem_limit: 350m
 
 builder:
   build: ../../
