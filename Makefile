@@ -62,8 +62,8 @@ build:
 	${INFO} "Build complete"
 
 release:
-	${INFO} "Pulling latest images..."
-	@ docker-compose -p $(REL_PROJECT) -f $(REL_COMPOSE_FILE) pull test
+	#${INFO} "Pulling latest images..."
+	#@ docker-compose -p $(REL_PROJECT) -f $(REL_COMPOSE_FILE) pull test
 	${INFO} "Building images..."
 	@ docker-compose -p $(REL_PROJECT) -f $(REL_COMPOSE_FILE) build app
 	${INFO} "Ensuring database is ready..."

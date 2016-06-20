@@ -24,14 +24,14 @@ app:
 #     JUNIT_REPORT_STACK: 1
 #   command: --reporter mocha-jenkins-reporter
 
-test:
-  image: jkuoctanner/todobackend-specs
-  links:
-    - app
-  environment:
-    JUNIT_REPORT_PATH: /reports/acceptance.xml
-    JUNIT_REPORT_STACK: 1
-  command: --reporter mocha-jenkins-reporter
+# test:
+#   image: jkuoctanner/todobackend-specs
+#   links:
+#     - app
+#   environment:
+#     JUNIT_REPORT_PATH: /reports/acceptance.xml
+#     JUNIT_REPORT_STACK: 1
+#   command: --reporter mocha-jenkins-reporter
 
 db:
   image: postgres:latest
