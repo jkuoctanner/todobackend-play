@@ -31,7 +31,7 @@ class TodoControllerTest extends PlaySpec
       status(result) mustEqual OK
 
       val json = contentAsJson(result)
-      (json \ 0 \ "title").as[String] mustEqual "Simon says: My Todo"
+      (json \ 0 \ "title").as[String] mustEqual """Simon says: "My Todo""""
       (json \ 0 \ "order").as[Int] mustEqual 10
       (json \ 0 \ "completed").as[Boolean] mustBe false
       (json \ 0 \ "url").as[String] mustEqual "http://localhost/todos/1"
@@ -47,7 +47,7 @@ class TodoControllerTest extends PlaySpec
       status(result) mustEqual OK
 
       val json = contentAsJson(result)
-      (json \ "title").as[String] mustEqual "Simon says: My Todo"
+      (json \ "title").as[String] mustEqual """Simon says: "My Todo""""
       (json \ "order").as[Int] mustEqual 10
       (json \ "completed").as[Boolean] mustBe false
       (json \ "url").as[String] mustEqual "http://localhost/todos/1"
@@ -79,7 +79,7 @@ class TodoControllerTest extends PlaySpec
       status(result) mustEqual OK
 
       val json = contentAsJson(result)
-      (json \ "title").as[String] mustEqual "Simon says: My Todo"
+      (json \ "title").as[String] mustEqual """Simon says: "My Todo""""
       (json \ "order").as[Int] mustEqual 10
       (json \ "completed").as[Boolean] mustBe false
       (json \ "url").as[String] mustEqual "http://localhost/todos/1"
@@ -121,7 +121,7 @@ class TodoControllerTest extends PlaySpec
       val result = controller.update(1L).apply(fakeRequest)
 
       status(result) mustEqual OK
-      (contentAsJson(result) \ "title").as[String] mustEqual "Simon says: new title"
+      (contentAsJson(result) \ "title").as[String] mustEqual """Simon says: "new title""""
     }
 
     "mark completion" in new Subject {
