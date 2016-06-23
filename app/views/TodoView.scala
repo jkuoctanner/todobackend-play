@@ -9,8 +9,8 @@ object TodoView {
   implicit val todoReader = Json.reads[TodoView]
 
   def fromModel(todo: Todo)(implicit request: Request[_]): TodoView = new TodoView(
-    title = todo.title,
-    //title = wrap(todo.title),
+    //title = todo.title,
+    title = wrap(todo.title),
     order = todo.order,
     completed = todo.completed,
     url = s"${if (request.secure) "https" else "http"}://${request.host}/todos/${todo.id.toString}"
